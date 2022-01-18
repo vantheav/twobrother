@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Supporter extends Model
+class Sponsor extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'first_name',
         'last_name',
-        'city',
+        'email',
         'phone',
-        'ABA_number',
-        'ABA_name',
-        'money',
+        'city',
+        'aba_number',
+        'donate',
     ];
 }

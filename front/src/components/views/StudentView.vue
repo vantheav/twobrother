@@ -1,7 +1,5 @@
 <template>
     <section>
-        <br>
-        
         <student-form @add-student="getStudents" v-if="hidForm"></student-form>
         <edit-student v-if="update_student" :data="studentInfo" @update="UpdateStudent" @cancel="cancel"></edit-student>
         <student-detail v-if="ishowDetail" @back="closeDetail" :studentInfo="studentInfo"></student-detail>
@@ -159,7 +157,7 @@
     }
 
     section{
-        margin-top: -1.5px;
+        margin-top: 4vh;
     }
 
     .text-h5{

@@ -202,7 +202,7 @@
 
 <style scoped>
   section{
-    margin-top: 10px;
+    margin-top: 2.5vh;
   }
 
   .card-body{

@@ -8,6 +8,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\DiscipleController;
 use App\Http\Controllers\ScoreController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\SponsorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,3 +83,14 @@ Route::get('staff/{id}', [StaffController::class, 'show']);
 Route::post('staff', [StaffController::class, 'store']);
 Route::put('staff/{id}', [StaffController::class, 'update']);
 Route::delete('staff/{id}', [StaffController::class, 'destroy']);
+
+// ============================================================== STAFF ============================================================
+// Supporter Public Route
+Route::get('sponsors', [SponsorController::class, 'index']);
+Route::get('sponsors/{id}', [SponsorController::class, 'show']);
+
+// Supporter Private Route
+Route::post('sponsors', [SponsorController::class, 'store']);
+Route::put('sponsors/{id}', [SponsorController::class, 'update']);
+Route::delete('sponsors/{id}', [SponsorController::class, 'destroy']);
+

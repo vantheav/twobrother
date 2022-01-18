@@ -39,6 +39,10 @@
           <v-icon class="white--text">mdi-alert-decagram</v-icon>
           <v-list-item-title class="white--text">Disciples</v-list-item-title>
         </v-list-item>
+        <v-list-item :to="{ path: '/donate' }">
+          <v-icon class="white--text">mdi-web</v-icon>
+          <v-list-item-title class="white--text">Donate</v-list-item-title>
+        </v-list-item>
       </ul>
       <div class="navbar-right">
         <span>{{user.role}}</span>
@@ -113,7 +117,7 @@
   }
 
   .rounded-circle{
-    margin-top: 3px;
+    margin-top: 13px;
     margin-left: 0px;
   }
   
@@ -156,7 +160,7 @@
     text-transform: uppercase; 
     text-decoration: none;
     cursor: pointer;
-    margin-top: 8px;
+    margin-top: 18px;
     margin-right: 20px;
   }
     

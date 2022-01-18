@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <v-dialog v-model="dialog" width="400">
+    <v-dialog v-model="dialog" width="400" transition="dialog-top-transition">
       <template v-slot:activator="{ on, attrs }" class="create-user-btn">
         <v-btn color="red darken-1" dark class="mb-2" v-bind="attrs" v-on="on" bottom fab fixed right> + </v-btn>
       </template>

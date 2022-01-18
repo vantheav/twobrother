@@ -1,6 +1,6 @@
 <template>
     <div class="">
-    <v-dialog v-model="dialog" width="500px">
+    <v-dialog v-model="dialog" width="500px" transition="dialog-top-transition">
       <v-row justify="center" class="a">
         <v-card ref="form" class="form">
           <h2 class="u-s">Update Student</h2>

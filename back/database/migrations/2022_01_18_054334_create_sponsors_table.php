@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSupportersTable extends Migration
+class CreateSponsorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateSupportersTable extends Migration
      */
     public function up()
     {
-        Schema::create('supporters', function (Blueprint $table) {
+        Schema::create('sponsors', function (Blueprint $table) {
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
-            $table->strig('city');
-            $table->integer('phone');
-            $table->integer('ABA_number');
-            $table->string('ABA_name');
-            $table->integer('money');
+            $table->string('email');
+            $table->string('phone');
+            $table->string('city');
+            $table->string('aba_number');
+            $table->integer('donate');
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ class CreateSupportersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('supporters');
+        Schema::dropIfExists('sponsors');
     }
 }

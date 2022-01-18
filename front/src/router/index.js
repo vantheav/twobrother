@@ -8,6 +8,7 @@ import StudentInfo from '../components/views/StudentInfo.vue';
 import Permission from '../components/views/PermissionView.vue';
 import Disciples from '../components/views/DiscipleView.vue';
 import Score from '../components/views/ScoreView.vue';
+import Donate from '../components/views/DonateView.vue'
 
 Vue.use(VueRouter)
 const routes = [
@@ -46,6 +47,10 @@ const routes = [
   {
     path: '/disciples',
     component: Disciples
+  },
+  {
+    path: '/donate',
+    component: Donate
   },
 ]
 

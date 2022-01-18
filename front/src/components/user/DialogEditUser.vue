@@ -1,6 +1,6 @@
 <template>
   <div class="text-center">
-    <v-dialog v-model="dialog" width="500">
+    <v-dialog v-model="dialog" width="500" transition="dialog-top-transition">
       <v-card class="pa-md-4 mx-lg-auto">
         <h2 class="u-u">Update User</h2>
         <form>

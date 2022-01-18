@@ -153,7 +153,7 @@
     background: #CFD8DC;
   }
   section{
-    margin-top: -1.5px;
+    margin-top: 2.5vh;
   }
 
   .title{

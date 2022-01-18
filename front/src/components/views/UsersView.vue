@@ -1,6 +1,5 @@
 <template>
   <section>
-    <br>
     <user-form @add-user="getAllUser"></user-form>
     <edit-user v-if="show_update" :data="userInfo" @update="UpdateUser" @cancel="cancel"></edit-user>
     <div>
@@ -145,7 +144,7 @@
     background: #CFD8DC;
   }
   section{
-    margin-top: -1.5px;
+    margin-top: 4vh;
   }
 
   .title{
