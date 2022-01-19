@@ -6,7 +6,7 @@
     <div>
       <v-container>
         <template>
-          <v-dialog v-model="dialogDelete" max-width="450px">
+          <v-dialog v-model="dialogDelete" max-width="470px" transition="dialog-top-transition">
             <v-card>
               <br>
               <v-card-title class="red--text">Are you sure you want to remove this Score?</v-card-title><br>
@@ -49,12 +49,12 @@
                     </td>
                     <td>{{ score.student.first_name }}</td>
                     <td>{{ score.student.last_name }}</td>
-                    <td>{{ score.java }}pts</td>
-                    <td>{{ score.javascript }}pts</td>
-                    <td>{{ score.python }}pts</td>
-                    <td>{{ score.htmlcss }}pts</td>
-                    <td>{{ score.pl }}pts</td>
-                    <td>{{ score.english }}pts</td>
+                    <td>{{ score.java }}</td>
+                    <td>{{ score.javascript }}</td>
+                    <td>{{ score.python }}</td>
+                    <td>{{ score.htmlcss }}</td>
+                    <td>{{ score.pl }}</td>
+                    <td>{{ score.english }}</td>  
                     <td>{{ ((score.english + score.pl+ score.htmlcss + score.python + score.javascript + score.java) / 10) }}</td>
                     <td v-if="((score.english + score.pl+ score.htmlcss + score.python + score.javascript + score.java) / 10) == 50">A+</td>
                     <td v-else-if="((score.english + score.pl+ score.htmlcss + score.python + score.javascript + score.java) /10) > 44">A</td>

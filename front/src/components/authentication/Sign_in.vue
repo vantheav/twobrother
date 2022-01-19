@@ -1,5 +1,5 @@
 <template>
-  <div class="login-page">
+  <div class="login-page" >
     <v-container fluid fill-height class="bg">
       <v-layout align-center justify-center>
         <div class="form-container">

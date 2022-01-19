@@ -5,8 +5,8 @@
         <v-card ref="form" class="form">
           <h2 class="u-s">Update Student</h2>
           <form>
-            <v-text-field ref="first name" v-model="first_name" label="First Name" required></v-text-field>
-            <v-text-field ref="last name" v-model="last_name" label="Last Name" required></v-text-field>
+            <v-text-field prepend-icon="mdi-account" ref="first name" v-model="first_name" label="First Name" required></v-text-field>
+            <v-text-field prepend-icon="mdi-account" ref="last name" v-model="last_name" label="Last Name" required></v-text-field>
             <v-radio-group v-model="sex" row>
               <v-radio label="Female" value="Female"></v-radio>
               <v-radio label="Male" value="Male"></v-radio>

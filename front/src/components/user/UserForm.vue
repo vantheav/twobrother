@@ -19,6 +19,7 @@
           </select>
           <v-file-input label="Choose image" prepend-icon="mdi-paperclip" v-model="picture" >
           </v-file-input>
+          <small>{{ errorMessage }}</small>
           <v-card-actions>
             <v-btn color="error" @click="cancel"> Cancel</v-btn>
             <v-btn color="primary" @click="AddNewUser"> Create</v-btn>
@@ -46,6 +47,7 @@
       picture: null,
       setPassword: "",
       student_id: '',
+      errorMessage: ''
     }),
     methods: {
       AddNewUser() {
@@ -60,6 +62,9 @@
           this.$emit("add-user", res.data);
           console.log(res.data);
           this.dialog = false;
+        }).catch((error) => {
+          console.log(error);
+          this.errorMessage = "Oops! you have to input all field";
         });
         this.username = "";
         this.email = "";
@@ -67,6 +72,7 @@
         this.role = "";
         this.picture = "";
         this.student_id = "";
+        this.errorMessage = "";
       },
       cancel() {
         this.dialog = false;
@@ -76,6 +82,7 @@
         this.select = "";
         this.picture = "";
         this.student_id = "";
+        this.errorMessage = "";
       },
       getAllStudent() {
         axios.get("/students").then((res) => {
@@ -99,6 +106,12 @@
     top: 85vh;
     float: right;
     position: fixed;
+  }
+
+  small{
+    color: red;
+    margin-top: 10px;
+    margin-left: 35%;
   }
 
   form {

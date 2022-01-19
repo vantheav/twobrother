@@ -1,6 +1,6 @@
 <template>
     <section>
-        <v-dialog v-model="dialogUpdate" width="400">
+        <v-dialog v-model="dialogUpdate" width="400" transition="dialog-top-transition">
         <v-card>
           <form>
             <h1>Disciple notice</h1><br>

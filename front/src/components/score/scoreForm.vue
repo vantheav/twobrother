@@ -1,31 +1,39 @@
 <template>
   <div class="">
-    <v-dialog v-model="dialog" width="400">
+    <v-dialog v-model="dialog" width="400" transition="dialog-top-transition">
       <template v-slot:activator="{ on, attrs }" class="create-user-btn">
         <v-btn color="red darken-1" dark class="mb-2" v-bind="attrs" v-on="on" bottom fab fixed right> + </v-btn>
       </template>
       <v-card>
         <form>
           <h1>Students Score</h1> <br>
-          <label for="cars">Choose student</label>
+          <div class="s-student">
+            <label for="cars">Choose student</label>
             <select class="selected" id="cars" v-model="studentSelected">
               <option v-for="student of studentsList" :key="student.id" :value=student.id>{{student.first_name}} {{student.last_name}}</option>
             </select>
-          <label for="cars">Java</label>
-            <input type="number" name="" id="" min="0" max="100" v-model="java">
-          <label for="cars">JavaScript</label>
-            <input type="number" name="" id="" min="0" max="100" v-model="javascript">
-          <label for="cars">Python</label>
-            <input type="number" name="" id="" min="0" max="100" v-model="python">
-          <label for="cars">Htmlcss</label>
-            <input type="number" name="" id="" min="0" max="100" v-model="htmlcss">
-          <label for="cars">PL</label>
-            <input type="number" name="" id="" min="0" max="50" v-model="pl">
-          <label for="cars">English</label>
-            <input type="number" name="" id="" min="0" max="50" v-model="english">
+          </div>
+          <div class="t-input">
+            <div class="left">
+              <label for="cars">Java</label>
+                <input type="number" name="" id="" min="0" max="100" v-model="java">
+              <label for="cars">JavaScript</label>
+                <input type="number" name="" id="" min="0" max="100" v-model="javascript">
+              <label for="cars">Python</label>
+                <input type="number" name="" id="" min="0" max="100" v-model="python">
+            </div>
+            <div class="right">
+              <label for="cars">Html / css</label>
+                <input type="number" name="" id="" min="0" max="100" v-model="htmlcss">
+              <label for="cars">PL</label>
+                <input type="number" name="" id="" min="0" max="50" v-model="pl">
+              <label for="cars">English</label>
+                <input type="number" name="" id="" min="0" max="50" v-model="english">
+            </div>
+          </div>
           <v-card-actions>
             <v-btn color="error" @click="dialog = false"> Cancel</v-btn>
-            <v-btn color="primary" @click="createStudentScore">Add</v-btn>
+            <v-btn color="primary" @click="createStudentScore">Create</v-btn>
           </v-card-actions> 
         </form>
       </v-card>
@@ -89,9 +97,10 @@
 
   form{
     padding: 15px;
+    width: 100%;
   }
 
-  .selected, input[type=date], input[type=number]{
+  .selected,input[type=number]{
     width: 100%;
     background: rgba(191, 190, 190, 0.809);
     border-radius: 2px;
@@ -100,6 +109,20 @@
     color: rgb(49, 47, 47);
     margin-bottom: 10px;
     border: none;
+  }
+
+  .s-student{
+    padding: 10px;
+  }
+
+  .t-input{
+    display: flex;
+  }
+
+  .left,
+  .right{
+    padding: 10px;
+    width: 50%;
   }
 
 </style>

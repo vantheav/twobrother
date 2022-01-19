@@ -6,7 +6,7 @@
     <div>
       <v-container>
         <v-row justify="center">
-          <v-dialog v-model="dialogDelete" max-width="480px">
+          <v-dialog v-model="dialogDelete" max-width="480px" transition="dialog-top-transition">
             <v-card >
               <br>
               <v-card-title class="red--text">Are you sure you want to delete this Disciple?</v-card-title><br>
@@ -35,10 +35,10 @@
                       <v-col cols="4">
                         <div class="imgp">
                           <div class="w">
-                            <v-icon v-if="disciple.type === 'Warning letter'" style="font-size: 100px; margin-top: 15px; color: #FFC107;">mdi-alert</v-icon>
-                            <v-icon v-if="disciple.type === 'Termination'" class="red--text" style="font-size: 100px; margin-top: 15px;">mdi-close-circle</v-icon>
-                            <v-icon v-if="disciple.type === 'Oral warning'" class="blue--text" style="font-size: 100px; margin-top: 15px;">mdi-alert-octagram</v-icon>
-                            <v-icon v-if="disciple.type === 'Notation'" class="black--text" style="font-size: 100px; margin-top: 15px; ">mdi-alert-box</v-icon>
+                            <v-icon v-if="disciple.type === 'Warning letter'" style="font-size: 70px; margin-top: 25px; color: #FFC107;">mdi-alert</v-icon>
+                            <v-icon v-if="disciple.type === 'Termination'" class="red--text" style="font-size: 70px; margin-top: 25px;">mdi-close-circle</v-icon>
+                            <v-icon v-if="disciple.type === 'Oral warning'" class="blue--text" style="font-size: 70px; margin-top: 25px;">mdi-alert-octagram</v-icon>
+                            <v-icon v-if="disciple.type === 'Notation'" class="black--text" style="font-size: 70px; margin-top: 25px; ">mdi-alert-box</v-icon>
                           </div>
                           <div class="p">
                             <img :src="imgUrl+disciple.student.image" />
@@ -227,7 +227,7 @@
   }
 
   .card{
-    height: 22vh;
+    height: 16vh;
     background: #ECEFF1;
     box-shadow: 0px 2px 4px 2px rgba(99, 99, 99, 0.25);
   }

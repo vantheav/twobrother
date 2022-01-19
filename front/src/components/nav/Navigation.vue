@@ -1,64 +1,54 @@
 <template>
   <nav class="navigation" >
     <div class="navbar">
-      <ul>
-        <template class="circle">
-          <v-tooltip bottom>
-            <template v-slot:activator="{ on, attrs }">
-              <v-img height="50" width="50" v-bind="attrs" v-on="on" :src="imgUrl + userAction.image" class="rounded-circle"></v-img>
-            </template>
-            <span>User Profile</span>
-          </v-tooltip>
-        </template>
-        <v-list-item-title class="p">{{userAction.username}}</v-list-item-title>
-        <v-list-item :to="{ path: '/home' }" v-if="userAction.role != 'STUDENT'">
-          <v-icon class="white--text">mdi-home</v-icon>
-          <v-list-item-title class="white--text">Home</v-list-item-title>
-        </v-list-item>
-        <v-list-item :to="{ path: '/user' }" v-if="userAction.role == 'Admin'">
-          <v-icon class="white--text">mdi-account</v-icon>
-          <v-list-item-title class="white--text">Users</v-list-item-title>
-        </v-list-item>
-        <v-list-item :to="{ path: '/students' }" v-if="userAction.role != 'STUDENT'">
-          <v-icon class="white--text">mdi-account-group-outline</v-icon>
-          <v-list-item-title class="white--text">Students</v-list-item-title>
-        </v-list-item>
-        <v-list-item :to="{ path: '/studentInfo' }" v-if="userAction.role == 'STUDENT'">
-          <v-icon class="white--text">mdi-account</v-icon>
-          <v-list-item-title class="white--text">Student</v-list-item-title>
-        </v-list-item>
-        <v-list-item :to="{ path: '/score' }">
-          <v-icon class="white--text">mdi-format-annotation-plus</v-icon>
-          <v-list-item-title class="white--text">Scores</v-list-item-title>
-        </v-list-item>
-        <v-list-item :to="{ path: '/permission' }">
-          <v-icon class="white--text">mdi-comment-account-outline</v-icon>
-          <v-list-item-title class="white--text">Permissions</v-list-item-title>
-        </v-list-item>
-        <v-list-item :to="{ path: '/disciples' }">
-          <v-icon class="white--text">mdi-alert-decagram</v-icon>
-          <v-list-item-title class="white--text">Disciples</v-list-item-title>
-        </v-list-item>
-        <v-list-item :to="{ path: '/donate' }">
-          <v-icon class="white--text">mdi-paper-cut-vertical</v-icon>
-          <v-list-item-title class="white--text">Donate</v-list-item-title>
-        </v-list-item>
-      </ul>
-      <div class="navbar-right">
-        <span>{{user.role}}</span>
-        <template>
-          <div class="text-center d-flex align-center">
-            <v-tooltip left>
-              <template v-slot:activator="{ on, attrs }">
-                <v-btn icon class="btn-Signout">
-                  <v-icon @click="Signout" style="font-size:35px;" class="white--text" v-bind="attrs" v-on="on">mdi-import</v-icon>
-                </v-btn>
-              </template>
-              <span>Sign out</span>
-            </v-tooltip>
-          </div>
-        </template>
-      </div>
+        <v-toolbar>
+            <v-tabs grow class="blue lighten-2">
+               <template class="circle">
+                  <v-tooltip bottom>
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-img height="50" width="50" v-bind="attrs" v-on="on" :src="imgUrl + userAction.image" class="rounded-circle"></v-img>
+                    </template>
+                    <span>User Profile</span>
+                  </v-tooltip>
+                </template>
+                <v-list-item-title class="white--text" id="p">{{userAction.username}}</v-list-item-title>
+                <v-tab :to="{ path: '/home' }" v-if="userAction.role != 'STUDENT'">
+                  <v-icon class="white--text">mdi-home</v-icon>
+                  <v-list-item-title class="white--text">Home</v-list-item-title>
+                </v-tab>
+                <v-tab :to="{ path: '/user' }" v-if="userAction.role == 'Admin'">
+                  <v-icon class="white--text">mdi-account</v-icon>
+                  <v-list-item-title class="white--text">Users</v-list-item-title>  
+                </v-tab>
+                <v-tab :to="{ path: '/students' }" v-if="userAction.role != 'STUDENT'">
+                  <v-icon class="white--text">mdi-account-group-outline</v-icon>
+                  <v-list-item-title class="white--text">Students</v-list-item-title>
+                </v-tab>
+                <v-tab :to="{ path: '/studentInfo' }" v-if="userAction.role == 'STUDENT'">
+                  <v-icon class="white--text">mdi-account</v-icon>
+                  <v-list-item-title class="white--text">Student</v-list-item-title>
+                </v-tab>
+                <v-tab :to="{ path: '/score' }" v-if="userAction.role != 'STUDENT'">
+                  <v-icon class="white--text">mdi-format-annotation-plus</v-icon>
+                  <v-list-item-title class="white--text">Scores</v-list-item-title>
+                </v-tab>
+                <v-tab :to="{ path: '/permission' }">
+                  <v-icon class="white--text">mdi-comment-account-outline</v-icon>
+                  <v-list-item-title class="white--text">Permissions</v-list-item-title>
+                </v-tab>
+                <v-tab :to="{ path: '/disciples' }">
+                  <v-icon class="white--text">mdi-alert-decagram</v-icon>
+                  <v-list-item-title class="white--text">Disciples</v-list-item-title>
+                </v-tab>
+                <v-tab :to="{ path: '/donate' }" v-if="userAction.role != 'STUDENT'">
+                  <v-icon class="white--text">mdi-paper-cut-vertical</v-icon>
+                  <v-list-item-title class="white--text">Donate</v-list-item-title>
+                </v-tab>
+                <v-tab>
+                  <v-icon class="white--text" @click="Signout" style="font-size:35px;" v-bind="attrs" v-on="on">mdi-import</v-icon>
+                </v-tab>
+            </v-tabs>
+        </v-toolbar>
     </div>
   </nav>
 </template>
@@ -115,24 +105,25 @@
     padding: 0;
     font-family: sans-serif;
   }
-
+  
   .rounded-circle{
-    margin-top: 13px;
-    margin-left: 0px;
+    margin-top: 8px;
+    margin-left: 15px;
   }
   
-  .p{
-    color: white;
-    font-size: 15px;
+  #p{
+    font-size: 20px;
     margin: 10px;
     margin-top: 13px;
     margin-left: 10px;
+    text-transform: uppercase;
   }
 
   img{
     width: 100%;
     height: 100%;
     border-radius: 50%;
+    margin-top: -10px;
   }
   
   .navbar {
@@ -145,7 +136,6 @@
   }
 
   nav{
-    top: 0;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 8px 8px, rgba(0, 0, 0, 0.23) 0px 4px 4px;
   }
 
@@ -153,15 +143,5 @@
     display: flex;
     float: right;
     height: 9vh;
-  }
-  
-  .btn-Signout {
-    font-size: 30px;
-    text-transform: uppercase; 
-    text-decoration: none;
-    cursor: pointer;
-    margin-top: 18px;
-    margin-right: 20px;
-  }
-    
+  }    
 </style>

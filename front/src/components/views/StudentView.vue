@@ -6,7 +6,7 @@
         <div v-else>
             <v-container>
                 <template>
-                    <v-dialog v-model="dialogDelete" max-width="450px">
+                    <v-dialog v-model="dialogDelete" max-width="450px" transition="dialog-top-transition">
                         <v-card>
                         <br>
                         <v-card-title class="red--text">Are you sure you want to remove this user?</v-card-title><br>
@@ -110,7 +110,6 @@
                     this.getStudents();
                 })
             },
-
             getStudents() {
                 axios.get("/students").then((res) => {
                     this.student_list = res.data;
@@ -182,8 +181,8 @@
         font-size: 15px;
     }
 
-    tbody{
-        height: 15vh;
+    tbody tr{
+        height:9vh;
         cursor: pointer;
     }
 

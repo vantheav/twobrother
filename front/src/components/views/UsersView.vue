@@ -5,7 +5,7 @@
     <div>
       <v-container>
         <template>
-          <v-dialog v-model="dialogDelete" max-width="450px">
+          <v-dialog v-model="dialogDelete" max-width="450px" transition="dialog-top-transition">
             <v-card>
               <br>
               <v-card-title class="red--text">Are you sure you want to remove this user?</v-card-title><br>
@@ -183,7 +183,7 @@
   }
 
   tbody tr{
-    height: 12vh;
+    height:9vh;
   }
 
   #action-btn{

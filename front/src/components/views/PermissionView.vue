@@ -6,7 +6,7 @@
     <div>
       <v-container>
         <v-row justify="center">
-          <v-dialog v-model="dialogDelete" max-width="500px">
+          <v-dialog v-model="dialogDelete" max-width="500px" transition="dialog-top-transition">
             <v-card >
               <br>
               <v-card-title class="red--text">Are you sure you want to delete this Permission?</v-card-title><br>
@@ -234,7 +234,7 @@
   }
 
   .card{
-    height: 22vh;
+    height: 16vh;
     background: #ECEFF1;
     box-shadow: 0px 2px 4px 2px rgba(99, 99, 99, 0.25);
   }

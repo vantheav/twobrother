@@ -32,7 +32,6 @@
 </template>
 
 <script>
-    // import axios from '../../axios-request.js'
     export default {
         props: ['data'],
         emits:['update', 'cancel'],
@@ -43,31 +42,39 @@
             email: null,
             phone: null,
             city: null,
-            aba_numbe: null,
-            donate: null
+            aba_number: null,
+            donate: null,
+            donateId: null,
         }),
         methods:{
-             cancel(){
-                this.$emit('cancel', false);
-            },
+          cancel(){
+            this.$emit('cancel', false);
+          },
+          edit(){
+            let editDonate = {
+              'first_name': this.first_name,
+              'last_name': this.last_name,
+              'email': this.email,
+              'phone': this.phone,
+              'city': this.city,
+              'aba_number': this.aba_number,
+              'donate': this.donate
+            }
+            this.$emit('update', this.donateId, editDonate, false);
+          }
         },
         mounted(){
-            this.createDonate();
+          this.first_name = this.data.first_name;
+          this.last_name = this.data.last_name;
+          this.email = this.data.email;
+          this.phone = this.data.phone;
+          this.city = this.data.city;
+          this.aba_number = this.data.aba_number;
+          this.donate = this.data.donate;
         }
     }
 </script>
 <style scoped>
-
-  h1{
-      margin-left: 18%;
-  }
-  
-  .create-user-btn {
-    top: 85vh;
-    float: right;
-    position: fixed;
-  }
-
   form{
     padding: 15px;
   }
@@ -82,6 +89,4 @@
   .right{
     margin-left: 9%;
   }
-
-
 </style>
