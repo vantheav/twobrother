@@ -40,7 +40,7 @@
           <v-list-item-title class="white--text">Disciples</v-list-item-title>
         </v-list-item>
         <v-list-item :to="{ path: '/donate' }">
-          <v-icon class="white--text">mdi-web</v-icon>
+          <v-icon class="white--text">mdi-paper-cut-vertical</v-icon>
           <v-list-item-title class="white--text">Donate</v-list-item-title>
         </v-list-item>
       </ul>
