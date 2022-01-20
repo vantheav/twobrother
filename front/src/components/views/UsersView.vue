@@ -197,4 +197,5 @@
   #delete{
     color: rgb(250, 56, 59);
   }
+  
 </style>

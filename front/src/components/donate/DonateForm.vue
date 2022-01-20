@@ -21,6 +21,7 @@
               </div> 
             </div>
             <v-text-field outlined dense :append-icon="'mdi-currency-usd'" ref="money" label="Donate" v-model="donate" required></v-text-field>
+            <small>{{ errorMessage }}</small>
             <v-card-actions>
                 <v-btn color="error" @click="cancelCreate"> Cancel</v-btn>
                 <v-btn color="primary" @click="createDonate"> Create</v-btn>
@@ -43,7 +44,8 @@
           phone: null,
           city: null,
           aba_numbe: null,
-          donate: null
+          donate: null,
+          errorMessage: "",
       }),
       methods:{
         createDonate(){
@@ -61,7 +63,10 @@
               this.dialog = false;
               this.$emit('add-donate', res.data);
               console.log(res.data);
-            })
+            }).catch((error) => {
+              console.log(error);
+              this.errorMessage = "Oops! អ្នកត្រូវតែបំពេញគ្រប់ Field ទាំងអស់";
+            });
           }
           this.first_name = "";
           this.last_name = "";
@@ -73,6 +78,7 @@
         },
         cancelCreate(){
           this.dialog = false;
+          this.errorMessage = "";
         },
       },
       mounted(){
@@ -107,5 +113,9 @@
     margin-left: 9%;
   }
 
-
+  small{
+    color: red;
+    margin-top: 10px;
+    margin-left: 25%;
+  }
 </style>

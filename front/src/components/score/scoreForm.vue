@@ -31,6 +31,7 @@
                 <input type="number" name="" id="" min="0" max="50" v-model="english">
             </div>
           </div>
+          <small>{{ errorMessage }}</small>
           <v-card-actions>
             <v-btn color="error" @click="dialog = false"> Cancel</v-btn>
             <v-btn color="primary" @click="createStudentScore">Create</v-btn>
@@ -47,14 +48,15 @@
     emits:['add-score'],
     data: () => ({
       studentSelected:null,
-      java: 0,
-      javascript: 0,
-      python: 0,
+      java: null,
+      javascript: null,
+      python: null,
       studentsList: [],
       dialog : false,
-      htmlcss: 0,
-      pl: 0,
-      english: 0,
+      htmlcss: null,
+      pl: null,
+      english: null,
+      errorMessage: "",
     }),
     methods: {
       getAllStudent(){
@@ -72,10 +74,24 @@
           'pl': this.pl,
           'english': this.english,
         }
-          axios.post('/score', newScore).then(res=>{
-            this.$emit("add-score", res.data);
-            this.dialog = false;
-          })
+        axios.post('/score', newScore).then(res=>{
+          this.$emit("add-score", res.data);
+          this.dialog = false;
+        }).catch((error) => {
+          console.log(error);
+          this.errorMessage = "Oops! អ្នកត្រូវតែបំពេញគ្រប់ Field ទាំងអស់";
+        });
+        this.java = "";
+        this.javascript = "";
+        this.pl = "";
+        this.python = "";
+        this.english = "";
+        this.htmlcss = "";
+        this.studentSelected = "";
+      },
+      cancelCreate(){
+        this.dialog = false;
+        this.errorMessage = "";
       },
     },
     mounted() {
@@ -98,6 +114,12 @@
   form{
     padding: 15px;
     width: 100%;
+  }
+
+  small{
+    color: red;
+    margin-top: 10px;
+    margin-left: 20%;
   }
 
   .selected,input[type=number]{

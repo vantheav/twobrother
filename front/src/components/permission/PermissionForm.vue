@@ -21,6 +21,7 @@
               <option v-for="leave of leavetype" :key="leave" :value=leave>{{leave}}</option>
             </select>
           <v-textarea label="Description" auto-grow outlined row-height="15" v-model="description"></v-textarea>
+          <small>{{ errorMessage }}</small>
           <v-card-actions>
             <v-btn color="error" @click="cancelCreate"> Cancel</v-btn>
             <v-btn color="primary" @click="CreatePermission"> Create</v-btn>
@@ -44,6 +45,7 @@
       leavetype: ["Authorize", "Unauthorize"],
       studentsList: [],
       dialog : false,
+      errorMessage: "",
     }),
     methods: {
       CreatePermission(){
@@ -58,7 +60,10 @@
           axios.post('/permissions', newPermission).then(res=>{
             this.dialog = false;
             this.$emit('add-permission', res.date);
-          })
+          }).catch((error) => {
+            console.log(error);
+            this.errorMessage = "Oops! អ្នកត្រូវតែបំពេញគ្រប់ Field ទាំងអស់";
+          });
         }
         this.studentSelected = "";
         this.startAt = "";
@@ -77,6 +82,7 @@
         this.endAt = "";
         this.type = "";
         this.description = "";
+        this.errorMessage = "";
       },
       getAllStudent(){
         axios.get('/students').then(res =>{
@@ -97,6 +103,12 @@
     text-align: center;
     align-items: center;
     justify-content: center;
+  }
+
+  small{
+    color: red;
+    margin-top: -10px;
+    margin-left: 20%;
   }
 
   .create-user-btn {

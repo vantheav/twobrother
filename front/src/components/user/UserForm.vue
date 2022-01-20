@@ -64,7 +64,7 @@
           this.dialog = false;
         }).catch((error) => {
           console.log(error);
-          this.errorMessage = "Oops! you have to input all field";
+          this.errorMessage = "Oops! អ្នកត្រូវតែបំពេញគ្រប់ Field ទាំងអស់";
         });
         this.username = "";
         this.email = "";
@@ -111,7 +111,7 @@
   small{
     color: red;
     margin-top: 10px;
-    margin-left: 35%;
+    margin-left: 30%;
   }
 
   form {

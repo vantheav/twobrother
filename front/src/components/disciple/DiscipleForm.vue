@@ -18,8 +18,9 @@
           <label for="cars">Start Date: </label><br>
           <input type="date" name="" id="" v-model="date"><br>
           <v-textarea label="Description" auto-grow outlined row-height="15" v-model="description"></v-textarea>
+          <small>{{ errorMessage }}</small>
           <v-card-actions>
-            <v-btn color="error" @click="dialog = false"> Cancel</v-btn>
+            <v-btn color="error" @click="cancelCreate"> Cancel</v-btn>
             <v-btn color="primary" @click="CreateDisciple"> Create</v-btn>
           </v-card-actions> 
         </form>
@@ -40,6 +41,7 @@
       leavetype: ["Notation", "Oral warning", "Warning letter", "Termination"],
       studentsList: [],
       dialog : false,
+      errorMessage: "",
     }),
     methods: {
       CreateDisciple(){
@@ -54,12 +56,20 @@
             console.log(res.data);
             this.dialog = false;
             this.$emit('add-disciple', res.data);
-          })
+          }).catch((error) => {
+            console.log(error);
+            this.errorMessage = "Oops! អ្នកត្រូវតែបំពេញគ្រប់ Field ទាំងអស់";
+          });
         }
         this.studentSelected = "";
         this.date = "";
         this.type = "";
         this.description = "";
+        this.errorMessage = "";
+      },
+      cancelCreate(){
+        this.dialog = false;
+        this.errorMessage = "";
       },
       getAllStudent(){
         axios.get('/students').then(res =>{
@@ -99,4 +109,9 @@
     border: none;
   }
 
+  small{
+    color: red;
+    margin-top: 10px;
+    margin-left: 20%;
+  }
 </style>

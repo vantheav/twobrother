@@ -142,7 +142,7 @@
       },
       getAllDisciple(){
         this.getUser();
-        axios.get('/disciple').then(res=>{
+        axios.get('/disciple').then( res=>{
           let store = res.data;
           if(this.role == "STUDENT"){
             for(let i of store){
@@ -301,7 +301,7 @@
   }
 
   .p{
-    margin-left: 75%;
+    margin-left: 80%;
   }
 
   img{

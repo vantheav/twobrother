@@ -40,7 +40,7 @@
                                     <th scope="col">Action</th>
                                 </thead> 
                                 <tbody>
-                                    <tr class="text-center" v-for="(students, index) in student_list" :key="index" style="text-align: center; align-items: center;justify-content: center; height:12vh;">
+                                    <tr class="text-center" v-for="(students, index) in student_list" :key="index" style="text-align: center; align-items: center;justify-content: center;">
                                         <td class="img" @click="studentDetail(students)">
                                             <v-img  :src="imgUrl + students.image" height="50" width="50"  class="pa-7 secondary rounded-circle d-inline-block"></v-img>
                                         </td>

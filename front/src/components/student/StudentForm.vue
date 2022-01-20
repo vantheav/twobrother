@@ -17,6 +17,7 @@
             <v-text-field ref="class" prepend-icon="mdi-school" v-model="getClass" label="Class" required></v-text-field>
             <v-text-field prepend-icon="mdi-phone-in-talk" ref="phone number" v-model="phone" label="Phone Number" required></v-text-field>
             <v-file-input prepend-icon="mdi-paperclip" label="Choose image" v-model="image" v-if="showfilInput"></v-file-input>
+            <small>{{ errorMessage }}</small>
             <v-card-actions>
               <v-btn color="error"  @click="cancelCreate"> Cancel </v-btn>
               <v-btn color="primary"  @click="createStudent"> Create </v-btn>
@@ -42,46 +43,32 @@
       id: null,
       showfilInput: true,
       dialog: false,
+      errorMessage: "",
     }),
     methods: {
       createStudent() {
-        if (this.editedIndex > -1) {
-          let editStudent = {
-            "first_name": this.first_name,
-            "last_name": this.last_name,
-            "class": this.getClass,
-            "phone": this.phone,
-            "gender": this.sex
-          }
-          axios.put("/students/" + this.id, editStudent).then((res) => {
-            console.log(res.data);
-          });
-          this.phone = null;
-          this.first_name = "";
-          this.last_name = "";
-          this.sex = "";
-          this.getClass = "";
-          this.image = null;
-        } else {
-          let newStudent = new FormData();
-          newStudent.append("first_name", this.first_name);
-          newStudent.append("last_name", this.last_name);
-          newStudent.append("class", this.getClass);
-          newStudent.append("phone", this.phone);
-          newStudent.append("gender", this.sex);
-          newStudent.append("image", this.image);
-          axios.post("/students", newStudent).then((res) => {
-            console.log(res.data);
-            this.$emit('add-student', res.data);
-          })
-          this.phone = null;
-          this.first_name = "";
-          this.last_name = "";
-          this.sex = "";
-          this.getClass = "";
-          this.image = null;
-        }
-        this.cancelCreate();
+        let newStudent = new FormData();
+        newStudent.append("first_name", this.first_name);
+        newStudent.append("last_name", this.last_name);
+        newStudent.append("class", this.getClass);
+        newStudent.append("phone", this.phone);
+        newStudent.append("gender", this.sex);
+        newStudent.append("image", this.image);
+        axios.post("/students", newStudent).then((res) => {
+          console.log(res.data);
+          this.$emit('add-student', res.data);
+          this.cancelCreate();
+        }).catch((error) => {
+          console.log(error);
+          this.errorMessage = "Oops! អ្នកត្រូវតែបំពេញគ្រប់ Field ទាំងអស់";
+        });
+        this.phone = null;
+        this.first_name = "";
+        this.last_name = "";
+        this.sex = "";
+        this.getClass = "";
+        this.image = null;   
+        this.errorMessage = "";     
       },
       cancelCreate() {
         this.dialog = false;
@@ -91,6 +78,7 @@
         this.sex = "";
         this.getClass = "";
         this.image = null;
+        this.errorMessage = "";
       },
       getActionUser(){
         axios.get('/getUserByID/' + this.userID).then(res=> {
@@ -123,4 +111,11 @@
     margin: 0;
     padding: 0;
   }
+
+  small{
+    color: red;
+    margin-top: 10px;
+    margin-left: 28%;
+  }
+
 </style>

@@ -279,7 +279,7 @@
   }
 
   .imgp{
-    margin-left: 40%;
+    margin-left: -115%;
   }
 
   .date-time{

@@ -30,16 +30,16 @@
             </div>
             <div class="school">
                 <div v-if="numOfDisciples > 0">
-                    <v-list-item v-for="(item,i) in discEachStudentList" :key="i">
-                    <div v-if="item.type != 'Termination'" id="dd" >
-                        <v-icon  class="green--text">mdi-school</v-icon>
-                        <strong class="green--text">At School</strong>             
-                    </div>
-                    <div v-else>
-                        <v-icon class="red--text">mdi-cancel</v-icon>
-                        <strong class="red--text">Out School</strong> 
-                    </div>
-                </v-list-item>
+                    <v-list-item>
+                        <div v-if="terminate" id="dd" >
+                            <v-icon  class="red--text">mdi-cancel</v-icon>
+                            <strong class="red--text ">Out School</strong>             
+                        </div>
+                        <div v-else>
+                            <v-icon class="green--text">mdi-school</v-icon>
+                            <strong class="green--text">At School</strong> 
+                        </div>
+                    </v-list-item>
                 </div>
                 <div v-else>
                     <v-icon  class="green--text">mdi-school</v-icon>
@@ -131,6 +131,7 @@
             numOfDisciples: '0',
             isPermission: true,
             isDisciple: false,
+            terminate: false,
             nodata: "No data on Permission",
             noDiscipledata:"No data on discipline"
         }),
@@ -154,9 +155,11 @@
                     this.numOfPermissions++;
                     console.log(i);
                 }
-                for(let u in this.discEachStudentList){
+                for(let u of this.discEachStudentList){
                     this.numOfDisciples++;
-                    console.log(u);
+                    if(u.type == 'Termination'){
+                        this.terminate = true;
+                    }
                 }
             },
         },
@@ -225,13 +228,13 @@
     .school{
         margin-top: 4.5%;
     }
+    
 
     img{
-        width: 120px;
-        height: 120px;
-        margin-left: 50%;
+        width: 125px;
+        height: 130px;
+        margin-left: 52%;
         margin-top: 4%;
-        border-radius: 50%;
     }
     
 </style>

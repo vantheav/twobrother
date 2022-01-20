@@ -4,7 +4,7 @@
         <donateform-edit v-if="update_donate" :data="donate_info" @update="EditDonate"></donateform-edit>
         <div class="container">
             <div class="left">
-                <h1>hh</h1>
+                <h1>សួស្ដី!</h1>
             </div>
             <div class="right">
                 <div id="card" v-for="(sponsor, i) in donateList" :key="i">

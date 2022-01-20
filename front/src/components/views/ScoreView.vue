@@ -42,7 +42,7 @@
                   <th scope="col">Grade</th>
                   <th scope="col">Action</th>
                 </thead>
-                <tbody class="text-center" style="text-align: center; align-items: center;justify-content: center; height:8vh;">
+                <tbody class="text-center" style="text-align: center; align-items: center;justify-content: center;">
                   <tr class="data" v-for="(score, index) in scoreList" :key="index">
                     <td class="img">
                       <v-img height="50" width="50" :src="imgUrl + score.student.image" class="pa-7 secondary rounded-circle d-inline-block"></v-img>
@@ -192,7 +192,7 @@
   }
 
   tbody tr{
-    height: 12vh;
+    height: 9vh;
   }
 
   #action-btn{

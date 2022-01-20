@@ -2,7 +2,7 @@
   <nav class="navigation" >
     <div class="navbar">
         <v-toolbar>
-            <v-tabs grow class="blue lighten-2">
+            <v-tabs grow class="blue lighten-1">
                <template class="circle">
                   <v-tooltip bottom>
                     <template v-slot:activator="{ on, attrs }">
